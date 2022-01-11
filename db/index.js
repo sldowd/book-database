@@ -15,6 +15,11 @@ class DB {
             `INSERT INTO books (title, author, year_finished, additional_info) VALUES ('${res.title}, '${res.author}', '${res.year}, ${res.info})`
         )
     }
+    deleteEntry() {
+        return this.connection.promise().query(
+            
+        )
+    }
 }
 
 const db = new DB(connection);
