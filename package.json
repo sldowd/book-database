@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "migrate" : "sqlite3 db/books.db < db/schema.sql",
-    "seed" : "sqlite3 db/books.db < db/seeds.sql",
-    "db" : "sqlite3 db/books.db",
-    "start" : "node server.js"
+    "migrate": "sqlite3 db/books.db < db/schema.sql",
+    "seed": "sqlite3 db/books.db < db/seeds.sql",
+    "db": "sqlite3 db/books.db",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/sldowd/book-database#readme",
   "dependencies": {
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "sqlite3": "^5.0.2"
   }
 }
