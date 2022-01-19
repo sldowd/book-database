@@ -9,7 +9,6 @@
     "seed": "sqlite3 db/books.db < db/seeds.sql",
     "db": "sqlite3 db/books.db",
     "start": "node index.js"
-
   },
   "repository": {
     "type": "git",
@@ -23,9 +22,12 @@
   },
   "homepage": "https://github.com/sldowd/book-database#readme",
   "dependencies": {
+    "dotenv": "^14.2.0",
+    "expres": "^0.0.5",
     "express": "^4.17.2",
     "inquirer": "^8.2.0",
     "mysql2": "^2.3.3",
+    "sequelize": "^6.13.0",
     "sqlite3": "^5.0.2"
   }
 }
