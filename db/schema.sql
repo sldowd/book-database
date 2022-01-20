@@ -1,9 +1,3 @@
-DROP TABLE IF EXISTS books;
+DROP DATABASE IF EXISTS book_database;
 
-CREATE TABLE books (
-    id INTEGER PRIMARY KEY,
-    title VARCHAR NOT NULL,
-    author VARCHAR NOT NULL,
-    year_finished INTEGER NOT NULL,
-    additional_info VARCHAR
-);
+CREATE DATABASE book_database;
