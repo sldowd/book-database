@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const { checkPassword } = require('../../utils')
 
 // GET /api/users
 router.get('/', (req, res) => {
@@ -88,5 +89,26 @@ router.delete('/:id', (req, res) => {
         res.status(500).json(err);
     })
 });
+
+router.post('/login', (req,res) => {
+    User.findOne({
+        where: {
+            email: req.body.email
+        }
+    })
+    .then(dbUserData => {
+        if(!dbUserData) {
+            res.status(404).json({ message: 'User not found' })
+            return;
+        }
+        
+        //verify user
+        const validPassword = dbUserData.checkPassword(req.body.password);
+        if (!validPassword) {
+            res.status(400).json({ message: 'Email and password do not match' })
+            return;
+        } res.json({user: dbUserData, message: 'Login successful'})
+    }) 
+})
 
 module.exports = router;
