@@ -4,6 +4,7 @@ const { Book, User } = require('../../models');
 router.get('/', (req,res) => {
     Book.findAll({
         attributes: ['id', 'title', 'author', 'year_completed'],
+        order: [['year_completed', 'DESC']],
         include: [
             {
                 model: User,
@@ -54,6 +55,42 @@ router.post('/', (req,res) => {
         console.log(err);
         res.status(500).json(err)
     })
-})
+});
+
+router.put('./:id', (req, res) => {
+    Book.update(req.body, {
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(dbBookData => {
+        if(!dbBookData) {
+            res.status(404).json({ message: 'Book not found'})
+        } 
+        res.json(dbBookData)
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err)
+    })
+});
+
+router.delete('/:id', (req ,res) => {
+    Book.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(dbBookData => {
+        if(!dbBookData) {
+            res.status(404).json({ message: 'Book not found'})
+        } 
+        res.json(dbBookData)
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err)
+    })
+});
 
 module.exports = router;
