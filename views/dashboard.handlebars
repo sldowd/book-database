@@ -1,1 +1,13 @@
-<
+<ul class="book-list">
+    {{#each books}}
+    <li>
+        <article>
+            <div>
+                <span>"{{title}}"</span>
+                <span>By: {{author}}</span>
+                <span>Completed in: {{year_completed}}</span>
+            </div>
+        </article>
+    </li>
+    {{/each}}
+</ul>
