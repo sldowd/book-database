@@ -8,13 +8,30 @@ const hbs = exphbs.create({});
 const app = express();
 const PORT = process.env.PORT || 3005;
 
+//session
+const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+const sess = {
+    secret: 'Stoptalkingaboutthesun',
+    cookie: {},
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+        db: sequelize
+    })
+};
+
+//middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-//serve static files
+  //serve static files
 app.use(express.static(path.join(__dirname, 'public')));
-//set up template engine
+  //set up template engine
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+  //session
+app.use(session(sess));
 
 //use routes
 app.use(routes);

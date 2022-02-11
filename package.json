@@ -23,10 +23,12 @@
   "homepage": "https://github.com/sldowd/book-database#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.2",
     "dotenv": "^14.2.0",
     "expres": "^0.0.5",
     "express": "^4.17.2",
     "express-handlebars": "^6.0.2",
+    "express-session": "^1.17.2",
     "inquirer": "^8.2.0",
     "mysql2": "^2.3.3",
     "sequelize": "^6.13.0",
