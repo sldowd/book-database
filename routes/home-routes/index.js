@@ -1,13 +1,19 @@
+const { OPEN_READWRITE } = require('sqlite3');
 const { User } = require('../../models');
 const { Book } = require('../../models')
 
 const router = require('express').Router();
 
 router.get('/', (req,res) => {
+    console.log(req.session);
     res.render('login')
 });
 
 router.get('/login', (req,res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/dashboard')
+        return;
+    }
     res.render('login')
 });
 
