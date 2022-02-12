@@ -22,7 +22,11 @@ router.get('/signup', (req,res) => {
 });
 
 router.get('/dashboard', (req,res) => {
+    console.log('TEST LOG')
+    console.log(req.session.id);
     Book.findAll({
+        
+        where: { user_id: req.session.user_id },
         attributes: [
             'title', 'author', 'year_completed'
         ],
@@ -34,7 +38,10 @@ router.get('/dashboard', (req,res) => {
     .then(dbBookData => {
         const books = dbBookData.map(book => book.get({ plain: true }));
         console.log('book data:', dbBookData[0]);
-        res.render('dashboard', { books });
+        res.render('dashboard', { 
+            books,
+            loggedIn: req.session.loggedIn
+        });
     })
     .catch(err => {
         console.log(err);
