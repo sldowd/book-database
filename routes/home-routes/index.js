@@ -1,11 +1,8 @@
-const { OPEN_READWRITE } = require('sqlite3');
 const { User } = require('../../models');
 const { Book } = require('../../models')
-
 const router = require('express').Router();
 
 router.get('/', (req,res) => {
-    console.log(req.session);
     res.render('login')
 });
 
@@ -25,10 +22,13 @@ router.get('/dashboard', (req,res) => {
     console.log('TEST LOG')
     console.log(req.session.id);
     Book.findAll({
-        
-        where: { user_id: req.session.user_id },
+        where: { 
+            user_id : req.session.user_id
+        },
         attributes: [
-            'title', 'author', 'year_completed'
+            'title',
+            'author',
+            'year_completed'
         ],
         include: [{
             model: User,
