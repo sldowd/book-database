@@ -22,7 +22,6 @@ async function signupFormHandler(event) {
         if (response.ok) {
             console.log('success');
             alert('Click OK to return to login screen');
-            )
             res.redirect('/');
         } else {
             alert(response.statusText);

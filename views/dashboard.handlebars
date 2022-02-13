@@ -1,3 +1,22 @@
+<aside>
+    <form id="add-book-form">
+        <div>
+            <label for="title">Title</label>
+            <input type="text" id="book-title">
+        </div>
+        <div>
+            <label for="author">Author</label>
+            <input type="text" id="book-author">
+        </div>
+        <div>
+            <label for="year-completed">Year Completed</label>
+            <input type="number" id="year-completed">
+        </div>
+        <div>
+            <button type="submit">Add Book</button>
+        </div>    
+    </form>
+</aside>
 <ul class="book-list">
     {{#each books}}
     <li>
@@ -11,3 +30,4 @@
     </li>
     {{/each}}
 </ul>
+<script src="/javascript/add-book.js"></script>
