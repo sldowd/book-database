@@ -1,4 +1,4 @@
-async function AddBookFormHandler(event) {
+async function AddBookFormHandler(event, req) {
     event.preventDefault();
 
     const title = document.querySelector('#book-title').value.trim();
